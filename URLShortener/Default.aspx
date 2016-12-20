@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div aria-expanded="undefined" style="border-width: medium; height: auto; padding-left: 10px; z-index: auto; padding-top: 10px; text-align: center;">
+    <div aria-expanded="undefined" style="border-width: medium; height: auto; padding-left: 10px; z-index: auto; padding-top: 5px; text-align: center;">
     
         URL Shortener Service<br />
         <br />
@@ -17,11 +17,11 @@
     
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Get shortened URL" Width="200px" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Get shortened URL" Width="200px" Height="30px" />
     
         <br />
         <br />
-        <asp:Button ID="Button2" runat="server" Text="Statistics" Width="200px" />
+        <asp:Button ID="Button2" runat="server" Text="Statistics" Width="200px" Height="30px" OnClick="Button2_Click" />
     
     </div>
     </form>

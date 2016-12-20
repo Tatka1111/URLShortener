@@ -5,7 +5,7 @@ namespace URLShortener
 {
     public class ShortlinkSQLWorker
     {
-        static public string connectionString = "server=localhost;user=root;database=URLShortener;port=3306";
+        static public string connectionString = "server=localhost;user=root;password=;database=URLShortener;port=3306";
 
         public static string Initialize()
         {
@@ -14,7 +14,7 @@ namespace URLShortener
             {
                 MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
                 mySqlConnection.Open();
-                MySqlCommand initCommand = new MySqlCommand("CREATE TABLE IF NOT EXISTS URL_Data (URL TEXT NOT NULL, ShortURL CHAR(40) NOT NULL, CreatedOn TEXT NOT NULL, Clicks INT NOT NULL)",
+                MySqlCommand initCommand = new MySqlCommand("CREATE TABLE IF NOT EXISTS URL_Data (URL TEXT NOT NULL, ShortURL CHAR(40) NOT NULL, CreatedOn CHAR(20) NOT NULL, Clicks INT NOT NULL)",
                     mySqlConnection);
                 initCommand.ExecuteNonQuery();
                 mySqlConnection.Close();

@@ -6,7 +6,8 @@ namespace URLShortener
 {
     public class Global : System.Web.HttpApplication
     {
-        public static string BaseURL = ""; 
+        public static string BaseURL = "";
+        public static string SQLInit = "";
 
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -14,6 +15,7 @@ namespace URLShortener
 
             Route N = new Route("{action}", new ShortlinkRouteHandler());
             routes.Add(N);
+            SQLInit = ShortlinkSQLWorker.Initialize();
         }
 
         protected void Session_Start(object sender, EventArgs e)

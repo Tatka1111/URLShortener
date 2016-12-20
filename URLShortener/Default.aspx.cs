@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace URLShortener
 {
@@ -15,11 +8,15 @@ namespace URLShortener
         {
             if (!IsPostBack)
             {
-                string SQLInit = ShortlinkSQLWorker.Initialize();
-                if (SQLInit!= "")
+                if (Global.SQLInit != "")
+                {
+                    Global.SQLInit = ShortlinkSQLWorker.Initialize();
+                }
+
+                if (Global.SQLInit != "")
                 {
                     TextBox1.Enabled = false;
-                    TextBox1.Text = "ERROR: " + SQLInit;
+                    TextBox1.Text = "ERROR: " + Global.SQLInit;
                 }
 
                 if (Global.BaseURL == "")
@@ -47,12 +44,12 @@ namespace URLShortener
             TextBox1.Text = "Wait...";
 
             string ShortURL = "";
-            if ((ShortURL = ShortlinkSQLWorker.InsertShortURL(url)).Length > 0)
+            if ((ShortURL = ShortlinkSQLWorker.InsertShortURL(url)).Length > 0 & !(ShortURL.IndexOf("Unable ")==0) )
             {
                 TextBox1.Text = Global.BaseURL+ShortURL;
             } else
             {
-                TextBox1.Text = "Some kind of error occured, probably with MySQL connection";
+                TextBox1.Text = "Seems like MySQL problems: " + ShortURL;
             }
 
         }

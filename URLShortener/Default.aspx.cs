@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace URLShortener
 {
@@ -21,7 +22,10 @@ namespace URLShortener
 
                 if (Global.BaseURL == "")
                 {
-                    Global.BaseURL = Request.Url.AbsoluteUri.Replace("Default.aspx","");
+                    string[] URLPartitially = Request.Url.AbsoluteUri.Split('/');
+                    URLPartitially[URLPartitially.Length - 1] = "";
+
+                    Global.BaseURL = string.Join("/",URLPartitially);
                 }
             }
         }

@@ -50,7 +50,7 @@ namespace URLShortener
                 checkingSqlReader.Close();
 
                 MySqlCommand NewShortLink = new MySqlCommand(string.Format("INSERT INTO URL_Data (URL, ShortURL, CreatedOn, Clicks) VALUES ('{0}','{1}','{2}',{3});",
-                    LongURL, Global.BaseURL+ShortURL, DateTime.Now.ToString(), 0),
+                    LongURL, (Global.BaseURL+ShortURL).Replace("Default.aspx", ""), DateTime.Now.ToString(), 0),
                     mySqlConnection);
                 NewShortLink.ExecuteNonQuery();
                 mySqlConnection.Close();

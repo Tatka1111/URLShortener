@@ -14,7 +14,7 @@ namespace URLShortener
             {
                 MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
                 mySqlConnection.Open();
-                MySqlCommand initCommand = new MySqlCommand("CREATE TABLE IF NOT EXISTS URL_Data (URL TEXT NOT NULL, ShortURL CHAR(60) NOT NULL, CreatedOn CHAR(20) NOT NULL, Clicks INT NOT NULL)",
+                MySqlCommand initCommand = new MySqlCommand("CREATE TABLE IF NOT EXISTS URL_Data (Id INT PRIMARY KEY auto_increment, URL TEXT NOT NULL, ShortURL CHAR(60) NOT NULL, CreatedOn CHAR(20) NOT NULL, Clicks INT NOT NULL)",
                     mySqlConnection);
                 initCommand.ExecuteNonQuery();
                 mySqlConnection.Close();

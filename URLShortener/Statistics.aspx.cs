@@ -41,7 +41,7 @@ namespace URLShortener
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect(Global.BaseURL);
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
